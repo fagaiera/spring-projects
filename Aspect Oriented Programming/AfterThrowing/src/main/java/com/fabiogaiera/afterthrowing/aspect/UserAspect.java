@@ -1,0 +1,19 @@
+package com.fabiogaiera.afterthrowing.aspect;
+
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+
+@Aspect
+public class UserAspect {
+
+    @Pointcut("execution(* com.fabiogaiera.afterthrowing.service.*.*(..))")
+    private void pointcut(){}
+
+    @AfterThrowing(pointcut = "pointcut()", throwing = "exception")
+    public void adviceForExceptionThrowing(Exception exception) throws Throwable {
+        System.out.println("Using @AfterThrowing annotation");
+        System.out.println("###### " + exception.getMessage() + " ######");
+    }
+
+}
