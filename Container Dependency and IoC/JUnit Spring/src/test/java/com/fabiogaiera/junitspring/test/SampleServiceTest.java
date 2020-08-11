@@ -1,7 +1,6 @@
 package com.fabiogaiera.junitspring.test;
 
 import com.fabiogaiera.junitspring.config.AppConfig;
-import com.fabiogaiera.junitspring.model.Order;
 import com.fabiogaiera.junitspring.service.SampleService;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -12,12 +11,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class, loader = AnnotationConfigContextLoader.class)
-public class AppTest {
+public class SampleServiceTest {
 
     @Autowired
     private SampleService sampleService;
@@ -28,25 +26,16 @@ public class AppTest {
     }
 
     @Test
-    public void testSampleService() {
-        assertEquals("class com.fabiogaiera.junitspring.service.SampleServiceImpl", this.sampleService.getClass().toString());
-    }
+    public void testCreateOrder() {
 
-    @Test
-    public void testSampleServiceCreateNewOrder() {
-
-        Order newOrder = new Order();
-        assertNotNull("Order is not null", newOrder);
-        assertThat(sampleService.createOrder(newOrder), instanceOf(Order.class));
+        assertEquals("XYZ", sampleService.createOrder().getSecurityCode());
 
     }
 
     @Test
-    public void testSampleServiceGetOrder() {
+    public void testGetOrder() {
 
-        Order existingOrder = sampleService.getOrder(0);
-        assertNotNull("Order is not null", existingOrder);
-        assertThat(sampleService.getOrder(0), instanceOf(Order.class));
+        assertEquals("XYZ", sampleService.getOrder(0).getSecurityCode());
 
     }
 
