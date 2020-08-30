@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
@@ -12,6 +13,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = AppConfig.class)
+@TestPropertySource(properties = {"name.method1=test"})
 public class Service2Test {
 
     @Autowired
@@ -21,7 +23,7 @@ public class Service2Test {
     public void testMethodFromService2() {
 
         assertNotNull(service2);
-        assertEquals("Executing methodFromService1", service2.methodFromService2());
+        assertEquals("Executing test", service2.methodFromService2());
 
     }
 
