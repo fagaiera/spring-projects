@@ -1,6 +1,8 @@
 package com.fabiogaiera.callback.config;
 
-import com.fabiogaiera.callback.service.UserService;
+import com.fabiogaiera.callback.service.ResultSetExtractorBean;
+import com.fabiogaiera.callback.service.RowCallbackHandlerBean;
+import com.fabiogaiera.callback.service.RowMapperBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,7 +14,7 @@ import javax.sql.DataSource;
 public class AppConfig {
 
     @Bean
-    public DataSource dataSourceWorldDB() {
+    public DataSource dataSource() {
 
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
@@ -24,29 +26,23 @@ public class AppConfig {
     }
 
     @Bean
-    public DataSource dataSourceSakilaDB() {
-
-        DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/sakila?useSSL=false&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT&allowPublicKeyRetrieval=true");     ds.setUsername("root");
-        ds.setPassword("root");
-        return ds;
-
+    public JdbcTemplate jdbcTemplate() {
+        return new JdbcTemplate(dataSource());
     }
 
     @Bean
-    public JdbcTemplate jdbcTemplateWorldDb() {
-        return new JdbcTemplate(dataSourceWorldDB());
+    public RowCallbackHandlerBean rowCallbackHandlerBean() {
+        return new RowCallbackHandlerBean();
     }
 
     @Bean
-    public JdbcTemplate jdbcTemplateSakilaDb() {
-        return new JdbcTemplate(dataSourceSakilaDB());
+    public ResultSetExtractorBean resultSetExtractorBean() {
+        return new ResultSetExtractorBean();
     }
 
     @Bean
-    public UserService userService() {
-        return new UserService();
+    public RowMapperBean rowMapperBean() {
+        return new RowMapperBean();
     }
 
 }

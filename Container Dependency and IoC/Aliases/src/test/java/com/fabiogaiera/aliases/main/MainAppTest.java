@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -21,7 +21,7 @@ import static org.junit.Assert.assertThrows;
 public class MainAppTest {
 
     @Autowired
-    private ConfigurableApplicationContext ctx;
+    private ApplicationContext ctx;
 
     @Test
     public void testMain() {
