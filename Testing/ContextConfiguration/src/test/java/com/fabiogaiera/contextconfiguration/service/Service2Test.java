@@ -16,7 +16,6 @@ import static org.junit.Assert.assertNotNull;
 @TestPropertySource(properties = {"name.method1=test"})
 public class Service2Test {
 
-    @Autowired
     private Service2 service2;
 
     @Test
@@ -25,6 +24,11 @@ public class Service2Test {
         assertNotNull(service2);
         assertEquals("Executing test", service2.methodFromService2());
 
+    }
+
+    @Autowired
+    public void setService2(Service2 service2) {
+        this.service2 = service2;
     }
 
 }
