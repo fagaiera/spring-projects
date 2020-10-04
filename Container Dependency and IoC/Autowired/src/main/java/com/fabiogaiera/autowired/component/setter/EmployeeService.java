@@ -12,7 +12,7 @@ public class EmployeeService {
         return employee;
     }
 
-    @Autowired
+    @Autowired //Autowired with setter
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }

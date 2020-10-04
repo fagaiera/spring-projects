@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 public class Employee {
 
-    @Autowired
+    @Autowired //Autowired with field
     private Company company;
 
     @Value("Fabio Gaiera")

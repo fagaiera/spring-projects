@@ -10,7 +10,7 @@ public class Employee {
     @Value("Fabio Gaiera")
     private String name;
 
-    @Autowired
+    @Autowired //Autowired with constructor
     public Employee(Company company) {
         this.company = company;
     }

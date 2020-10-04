@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmployeeService {
 
-    @Autowired
+    @Autowired //Autowired with field
     private Employee employee;
 
     public Employee getEmployee() {

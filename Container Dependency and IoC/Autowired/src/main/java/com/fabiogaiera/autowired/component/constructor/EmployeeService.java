@@ -8,7 +8,7 @@ public class EmployeeService {
 
     private Employee employee;
 
-    @Autowired
+    @Autowired //Autowired with constructor
     public EmployeeService(Employee employee) {
         this.employee = employee;
     }
