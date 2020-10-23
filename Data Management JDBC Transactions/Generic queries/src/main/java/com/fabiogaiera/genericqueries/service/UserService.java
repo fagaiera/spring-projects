@@ -21,11 +21,13 @@ public class UserService {
         });
     }
 
+    // Many objects
     public void performQueryForObject() {
         Integer i = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM city", Integer.class);
         System.out.println("Rows: " + i);
     }
 
+    // Many objects
     public void performQueryForList() {
 
         List<City> cities = new ArrayList<>();
@@ -42,6 +44,7 @@ public class UserService {
 
     }
 
+    // One object
     public void performQueryForMap() {
 
         Map<String, Object> cityFromQuery = jdbcTemplate.queryForMap("SELECT * FROM city WHERE ID = 1");
